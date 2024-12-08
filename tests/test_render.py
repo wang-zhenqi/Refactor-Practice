@@ -1,9 +1,5 @@
 import pytest
 
-import os
-print(os.getcwd())
-print(os.path)
-
 from statement import renderPlainText, renderHtml
 
 

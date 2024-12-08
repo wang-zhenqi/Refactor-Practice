@@ -1,8 +1,7 @@
 import json
 import pytest
 
-
-from src.statement import Statement
+from statement import Statement
 
 @pytest.fixture
 def statement():
