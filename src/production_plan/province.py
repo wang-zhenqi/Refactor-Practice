@@ -1,14 +1,14 @@
-from producer import Producer
+from production_plan.producer import Producer
 
 
 class Province:
     def __init__(self, doc):
-        self.name = doc.name
+        self.name = doc["name"]
         self.producers = []
         self.total_production = 0
-        self.demand = doc.demand
-        self.price = doc.price
-        for producer in doc.producers:
+        self.demand = doc["demand"]
+        self.price = doc["price"]
+        for producer in doc["producers"]:
             self.add_producer(Producer(self, producer))
 
     def add_producer(self, arg):

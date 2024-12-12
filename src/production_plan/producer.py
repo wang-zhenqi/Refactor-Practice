@@ -1,9 +1,9 @@
 class Producer:
     def __init__(self, a_province, data):
         self.province = a_province
-        self.cost = data.cost
-        self.name = data.name
-        self.production = data.production or 0
+        self.cost = data["cost"]
+        self.name = data["name"]
+        self.production = data["production"] or 0
 
     def get_name(self):
         return self.name

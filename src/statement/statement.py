@@ -1,8 +1,7 @@
 import json
 from functools import reduce
-from pathlib import Path
 
-project_root = Path(__file__).parent.parent.parent
+from utils import project_root
 
 
 def usd(number):

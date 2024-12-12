@@ -2,7 +2,8 @@ import json
 
 import pytest
 
-from statement.statement import Statement, project_root
+from statement.statement import Statement
+from utils import project_root
 
 
 @pytest.fixture
