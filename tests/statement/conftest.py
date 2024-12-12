@@ -1,17 +1,14 @@
 import json
-from pathlib import Path
 
 import pytest
 
-from statement.statement import Statement
-
-project_root = Path(__file__).parent.parent.parent
+from statement.statement import Statement, project_root
 
 
 @pytest.fixture
 def statement():
-    invoice = json.load(open(project_root / "resources" / "invoices.json"))
-    plays = json.load(open(project_root / "resources" / "plays.json"))
+    invoice = json.load(open(project_root / "resources" / "statement" / "invoices.json"))
+    plays = json.load(open(project_root / "resources" / "statement" / "plays.json"))
     return Statement(invoice, plays)
 
 

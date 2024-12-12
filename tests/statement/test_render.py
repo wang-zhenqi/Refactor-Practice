@@ -1,8 +1,8 @@
-from statement.statement import renderHtml, renderPlainText
+from statement.statement import render_html, render_plain_text
 
 
 def test_statement_should_return_a_formatted_statement_with_correct_values(statement_data):
-    result = renderPlainText(statement_data)
+    result = render_plain_text(statement_data)
     expected = """Statement for BigCo
  Hamlet: $650.00 (55 seats)
  As You Like It: $580.00 (35 seats)
@@ -14,7 +14,7 @@ You earned 47 credits
 
 
 def test_should_render_html_string(statement_data):
-    result = renderHtml(statement_data)
+    result = render_html(statement_data)
     expected = """<h1>Statement for BigCo</h1>
 <table>
 <tr><th>play</th><th>seats</th><th>cost</th></tr>

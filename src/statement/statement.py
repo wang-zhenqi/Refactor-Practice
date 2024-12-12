@@ -1,12 +1,15 @@
 import json
 from functools import reduce
+from pathlib import Path
+
+project_root = Path(__file__).parent.parent.parent
 
 
 def usd(number):
     return f"${(number / 100):,.2f}"
 
 
-def renderPlainText(data):
+def render_plain_text(data):
     result = f"Statement for {data['customer']}\n"
 
     for perf in data["performances"]:
@@ -17,7 +20,7 @@ def renderPlainText(data):
     return result
 
 
-def renderHtml(data):
+def render_html(data):
     result = f"<h1>Statement for {data['customer']}</h1>\n"
     result += "<table>\n"
     result += "<tr><th>play</th><th>seats</th><th>cost</th></tr>\n"
@@ -30,12 +33,12 @@ def renderHtml(data):
 
 
 class Statement:
-    def __init__(self, invoice, plays):
-        self.invoice = invoice
-        self.plays = plays
+    def __init__(self, _invoices, _plays):
+        self.invoices = _invoices
+        self.plays = _plays
 
-    def amount_for(self, perf):
-        result = 0
+    @staticmethod
+    def amount_for(perf):
         if perf["type"] == "tragedy":
             result = 40000
             if perf["audience"] > 30:
@@ -49,10 +52,12 @@ class Statement:
             raise ValueError(f"unknown type: {perf['type']}")
         return result
 
-    def total_amount(self, data):
+    @staticmethod
+    def total_amount(data):
         return reduce(lambda x, y: x + y["amount"], data["performances"], 0)
 
-    def volume_credits_for(self, perf):
+    @staticmethod
+    def volume_credits_for(perf):
         result = 0
         result += max(perf["audience"] - 30, 0)
         if "comedy" == perf["type"]:
@@ -63,18 +68,21 @@ class Statement:
         return reduce(lambda x, y: x + y, map(self.volume_credits_for, data["performances"]), 0)
 
     def create_statement_data(self):
-        result = {}
-        result["customer"] = self.invoice["customer"]
-        result["performances"] = list(map(lambda x: x | self.plays[x["playID"]], self.invoice["performances"]))
-        result["performances"] = list(map(lambda x: x | {"amount": self.amount_for(x)}, result["performances"]))
+        result = {
+            "customer": self.invoices["customer"],
+            "performances": list(map(lambda x: x | self.plays[x["playID"]], self.invoices["performances"])),
+        }
+        result["performances"] = list(map(lambda x: x | {"amount": Statement.amount_for(x)}, result["performances"]))
         result["total_amount"] = self.total_amount(result)
         result["total_volume_credits"] = self.total_volume_credits(result)
         return result
 
 
 if __name__ == "__main__":
-    invoice = json.load(open("/workspace/Python/resources/invoices.json"))
-    plays = json.load(open("/workspace/Python/resources/plays.json"))
-    stmt = Statement(invoice, plays)
-    data = stmt.create_statement_data()
-    print(renderHtml(data))
+    invoices = json.load(open(project_root / "resources" / "statement" / "invoices.json"))
+    plays = json.load(open(project_root / "resources" / "statement" / "plays.json"))
+    statement = Statement(invoices, plays)
+    statement_data = statement.create_statement_data()
+    print(render_html(statement_data))
+    print("===========")
+    print(render_plain_text(statement_data))
