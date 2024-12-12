@@ -1,5 +1,4 @@
 import json
-import os
 from functools import reduce
 
 
@@ -9,13 +8,14 @@ def usd(number):
 
 def renderPlainText(data):
     result = f"Statement for {data['customer']}\n"
-    
+
     for perf in data["performances"]:
         result += f" {perf['name']}: {usd(perf['amount'])} ({perf['audience']} seats)\n"
-    
+
     result += f"Amount owed is {usd(data['total_amount'])}\n"
     result += f"You earned {data['total_volume_credits']} credits\n"
     return result
+
 
 def renderHtml(data):
     result = f"<h1>Statement for {data['customer']}</h1>\n"
@@ -27,6 +27,7 @@ def renderHtml(data):
     result += f"<p>Amount owed is <em>{usd(data['total_amount'])}</em></p>\n"
     result += f"<p>You earned <em>{data['total_volume_credits']}</em> credits</p>\n"
     return result
+
 
 class Statement:
     def __init__(self, invoice, plays):
@@ -69,6 +70,7 @@ class Statement:
         result["total_amount"] = self.total_amount(result)
         result["total_volume_credits"] = self.total_volume_credits(result)
         return result
+
 
 if __name__ == "__main__":
     invoice = json.load(open("/workspace/Python/resources/invoices.json"))

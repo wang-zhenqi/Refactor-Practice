@@ -1,6 +1,4 @@
-import pytest
-
-class TestStatement():
+class TestStatement:
     def test_total_amount_should_return_correct_value(self, statement, statement_data):
         result = statement.total_amount(statement_data)
         expected = 173000

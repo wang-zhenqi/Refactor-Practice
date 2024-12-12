@@ -1,6 +1,4 @@
-import pytest
-
-from statement import renderPlainText, renderHtml
+from statement import renderHtml, renderPlainText
 
 
 def test_statement_should_return_a_formatted_statement_with_correct_values(statement_data):
@@ -13,6 +11,7 @@ Amount owed is $1,730.00
 You earned 47 credits
 """
     assert result == expected
+
 
 def test_should_render_html_string(statement_data):
     result = renderHtml(statement_data)
