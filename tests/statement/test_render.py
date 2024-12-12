@@ -1,4 +1,4 @@
-from statement import renderHtml, renderPlainText
+from statement.statement import renderHtml, renderPlainText
 
 
 def test_statement_should_return_a_formatted_statement_with_correct_values(statement_data):

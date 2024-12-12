@@ -3,9 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from statement import Statement
+from statement.statement import Statement
 
-project_root = Path(__file__).parent.parent
+project_root = Path(__file__).parent.parent.parent
 
 
 @pytest.fixture
