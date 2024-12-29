@@ -40,10 +40,16 @@ class Province:
         self.price = int(arg)
 
     def shortfall(self):
-        return self.demand - self.total_production
+        try:
+            return self.demand - self.total_production
+        except TypeError:
+            return 0
 
     def profit(self):
-        return self.demand_value() - self.demand_cost()
+        try:
+            return self.demand_value() - self.demand_cost()
+        except TypeError:
+            return 0
 
     def demand_cost(self):
         result = 0
