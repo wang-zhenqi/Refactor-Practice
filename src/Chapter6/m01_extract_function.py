@@ -6,7 +6,7 @@ def process_student_grades(student):
     average_score = total_score / len(student["grades"])
 
     # 判断是否及格
-    status = get_score_status(average_score)
+    status = determine_status(average_score)
 
     # 生成成绩报告
     return generate_report(
@@ -27,7 +27,7 @@ def generate_report(student_name, total_score, average_score, status):
     return report
 
 
-def get_score_status(average_score):
+def determine_status(average_score):
     return "Pass" if average_score >= 60 else "Fail"
 
 
