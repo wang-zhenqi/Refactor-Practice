@@ -3,7 +3,7 @@ def process_student_grades(student):
     total_score = sum_total_score(student["grades"])
 
     # 计算平均分
-    average_score = total_score / len(student["grades"])
+    average_score = cal_average(total_score, len(student["grades"]))
 
     # 判断是否及格
     status = determine_status(average_score)
@@ -18,24 +18,24 @@ def process_student_grades(student):
 
 
 def generate_report(student_name, total_score, average_score, status):
-    report = {
+    return {
         "name": student_name,
         "total_score": total_score,
         "average_score": average_score,
         "status": status,
     }
-    return report
 
 
 def determine_status(average_score):
     return "Pass" if average_score >= 60 else "Fail"
 
 
+def cal_average(total_score, num_subject):
+    return total_score / num_subject
+
+
 def sum_total_score(grades):
-    total_score = 0
-    for subject, score in grades.items():
-        total_score += score
-    return total_score
+    return sum(grades.values())
 
 
 # 示例学生数据
