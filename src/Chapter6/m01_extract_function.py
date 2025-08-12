@@ -1,8 +1,6 @@
 def process_student_grades(student):
     # 计算总分
-    total_score = 0
-    for subject, score in student["grades"].items():
-        total_score += score
+    total_score = sum_total_score(student)
 
     # 计算平均分
     average_score = total_score / len(student["grades"])
@@ -19,7 +17,14 @@ def process_student_grades(student):
     return report
 
 
-# 示例学生数据
-student = {"name": "Alice", "grades": {"Math": 85, "Science": 90, "History": 75, "English": 80}}
+def sum_total_score(student):
+    total_score = 0
+    for subject, score in student["grades"].items():
+        total_score += score
+    return total_score
 
-print(process_student_grades(student))
+
+# 示例学生数据
+alice = {"name": "Alice", "grades": {"Math": 85, "Science": 90, "History": 75, "English": 80}}
+
+print(process_student_grades(alice))
