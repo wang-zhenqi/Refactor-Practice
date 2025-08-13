@@ -10,14 +10,9 @@ def print_invoice(quantity, price):
 print_invoice(5, 10)
 
 
-def calculate_discounted_price(price, discount_rate):
-    discounted_price = price * (1 - discount_rate)
-    return round(discounted_price, 2)
-
-
 def print_order_summary(item_name, price, quantity, discount_rate):
     total_price = price * quantity
-    final_price = calculate_discounted_price(total_price, discount_rate)
+    final_price = round(total_price * (1 - discount_rate), 2)
     print(f"Item: {item_name}")
     print(f"Quantity: {quantity}")
     print(f"Total Price (before discount): {total_price}")
