@@ -1,8 +1,9 @@
-from m02_inline_function import print_invoice
+from m02_inline_function import print_invoice, print_order_summary
 
 
 def test_print_invoice():
-    quantity = 2
-    price = 10
-    expected = 20
-    assert print_invoice(quantity, price) == expected
+    assert print_invoice(2, 10) == 20
+
+
+def test_print_order_summary():
+    assert print_order_summary("books", 100, 5, 0.8) == 100.0
