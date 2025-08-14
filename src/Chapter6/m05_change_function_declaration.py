@@ -22,7 +22,8 @@ def calculate_shipping_cost(weight, distance, rate_per_kg, rate_per_km, abroad):
     第二阶修改：增减函数参数
     目标：删除 `abroad` 参数，因为业务方说明不用再区分是否运往海外了，价格统一了
     """
-    if abroad:
-        return round((weight * rate_per_kg + distance * rate_per_km) * 1.1, 2)
-    else:
-        return weight * rate_per_kg + distance * rate_per_km
+    return xx(weight, distance, rate_per_kg, rate_per_km)
+
+
+def xx(weight, distance, rate_per_kg, rate_per_km):
+    return weight * rate_per_kg + distance * rate_per_km

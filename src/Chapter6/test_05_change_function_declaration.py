@@ -25,5 +25,5 @@ def test_apply_discount():
 
 
 def test_calulate_shipping_cost():
-    assert calculate_shipping_cost(10, 100, 0.5, 0.2, True) == 27.5
+    assert calculate_shipping_cost(10, 100, 0.5, 0.2, True) == 25
     assert calculate_shipping_cost(10, 100, 0.5, 0.2, False) == 25
