@@ -7,13 +7,11 @@ def calculate_total_price(items):
     return total
 
 
-def apply_discount(total_price, discount_rate):
+def apply_discount_and_tax(discount_rate, total_price, tax_rate=0.0):
     """
     第二阶修改：增减函数参数
     目标：给函数新增一个 `tax_rate` 参数
     """
-    return zzapply(discount_rate, total_price, 0.0)
-
-
-def zzapply(discount_rate, total_price, tax_rate=0.0):
-    return total_price * (1 - discount_rate) * (1 + tax_rate)
+    net_rate = 1 - discount_rate
+    tax_inclusive_rate = 1 + tax_rate
+    return total_price * net_rate * tax_inclusive_rate
