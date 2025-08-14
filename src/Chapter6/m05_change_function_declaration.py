@@ -12,4 +12,8 @@ def apply_discount(total_price, discount_rate):
     第二阶修改：增减函数参数
     目标：给函数新增一个 `tax_rate` 参数
     """
+    return zzapply(discount_rate, total_price)
+
+
+def zzapply(discount_rate, total_price):
     return total_price * (1 - discount_rate)
