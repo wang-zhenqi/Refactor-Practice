@@ -1,4 +1,4 @@
-from m05_change_function_declaration import calc_total_price
+from m05_change_function_declaration import calculate_total_price
 
 
 def test_calc_total_price():
@@ -12,4 +12,4 @@ def test_calc_total_price():
             "quantity": 2,
         },
     ]
-    assert calc_total_price(items) == 90
+    assert calculate_total_price(items) == 90

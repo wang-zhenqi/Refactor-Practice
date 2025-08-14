@@ -1,4 +1,4 @@
-def calc_total_price(items):
+def calculate_total_price(items):
     """
     第一阶修改：更改函数名
     """
