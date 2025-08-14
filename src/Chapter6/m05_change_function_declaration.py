@@ -23,3 +23,18 @@ def calculate_shipping_cost(weight, distance, rate_per_kg, rate_per_km):
     目标：删除 `abroad` 参数，因为业务方说明不用再区分是否运往海外了，价格统一了
     """
     return round(weight * rate_per_kg + distance * rate_per_km, 2)
+
+
+class User:
+    def __init__(self, name, age, email, activity_level, membership_years):
+        self.name = name
+        self.age = age
+        self.email = email
+        self.activity_level = activity_level
+        self.membership_years = membership_years
+
+
+def calculate_user_score(user):
+    base_score = user.age * 10
+    activity_bonus = user.activity_level * 20
+    return base_score + activity_bonus
