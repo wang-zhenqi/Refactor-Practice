@@ -15,5 +15,5 @@ def apply_discount(total_price, discount_rate):
     return zzapply(discount_rate, total_price, 0.0)
 
 
-def zzapply(discount_rate, total_price, tax_rate):
+def zzapply(discount_rate, total_price, tax_rate=0.0):
     return total_price * (1 - discount_rate) * (1 + tax_rate)
