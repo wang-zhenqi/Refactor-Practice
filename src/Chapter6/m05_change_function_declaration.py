@@ -34,7 +34,7 @@ class User:
         self.membership_years = membership_years
 
 
-def calculate_user_score(age, activity_level):
+def calculate_lifestyle_score(age, activity_level):
     """
     第三阶段修改：把参数改为属性
     这种方法主要适用于原始函数所处理的数据只是参数的某些属性，因此将整个参数都传入就不太合理，

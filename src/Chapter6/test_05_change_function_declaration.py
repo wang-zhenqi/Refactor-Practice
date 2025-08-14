@@ -1,9 +1,9 @@
 from m05_change_function_declaration import (
     User,
     apply_discount_and_tax,
+    calculate_lifestyle_score,
     calculate_shipping_cost,
     calculate_total_price,
-    calculate_user_score,
 )
 
 
@@ -31,6 +31,6 @@ def test_calculate_shipping_cost():
     assert calculate_shipping_cost(10, 199, 0.5, 0.2) == 44.8
 
 
-def test_calculate_user_score():
+def test_calculate_lifestyle_score():
     user = User(name="Alice", age=30, email="alice@example.com", activity_level=3, membership_years=5)
-    assert calculate_user_score(user.age, user.activity_level) == 360
+    assert calculate_lifestyle_score(user.age, user.activity_level) == 360
