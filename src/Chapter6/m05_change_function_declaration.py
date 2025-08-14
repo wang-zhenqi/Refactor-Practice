@@ -34,15 +34,11 @@ class User:
         self.membership_years = membership_years
 
 
-def calculate_user_score(user):
+def calculate_user_score(age, activity_level):
     """
     第三阶段修改：把参数改为属性
     这种方法主要适用于原始函数所处理的数据只是参数的某些属性，因此将整个参数都传入就不太合理，
     会让读者误解该函数的用法。通过“把参数改为属性”的方法，只传入实际用到的属性作为参数，
     这样可以降低函数处理的复杂度，提高可读性，同时让函数的使用方式更加具体。
     """
-    return xx(user.age, user.activity_level)
-
-
-def xx(age, activity_level):
     return age * 10 + activity_level * 20
