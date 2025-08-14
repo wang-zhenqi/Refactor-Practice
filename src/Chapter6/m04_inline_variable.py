@@ -1,17 +1,8 @@
 def generate_greeting(name, age, city):
-    # 临时变量：格式化后的姓名和年龄
-    formatted_name = f"Name: {name}"
-    formatted_age = f"Age: {age}"
-    # 临时变量：格式化后的城市
-    formatted_city = f"City: {city}"
-    # 组合成完整的问候语
-    greeting = f"Hello! {formatted_name}, {formatted_age}, {formatted_city}"
-    return greeting
+    return f"Hello! Name: {name}, Age: {age}, City: {city}"
 
 
-# 调用函数
 print(generate_greeting("Alice", 30, "New York"))
-
 
 """def calculate_shipping_cost(weight, distance, rate_per_kg, rate_per_km):
     # 计算重量费用
