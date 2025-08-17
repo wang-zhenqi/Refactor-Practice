@@ -1,3 +1,5 @@
+from types import MappingProxyType
+
 # 全局变量：默认公司信息
 _default_company_data = {
     "name": "TechCorp",
@@ -7,7 +9,7 @@ _default_company_data = {
 
 
 def default_company():
-    return _default_company_data.copy()
+    return MappingProxyType(_default_company_data)
 
 
 def set_default_company(data):
