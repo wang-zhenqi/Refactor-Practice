@@ -4,11 +4,8 @@ class BloodPressureReading:
         self.diastolic = diastolic
 
 
-def is_hypertensive(systolic, diastolic, reading: BloodPressureReading):
-    """判断是否为高血压
-    :param reading:
-    """
-    return reading.systolic >= 140 or diastolic >= 90
+def is_hypertensive(reading: BloodPressureReading):
+    return reading.systolic >= 140 or reading.diastolic >= 90
 
 
 def is_prehypertensive(systolic, diastolic):
@@ -19,7 +16,7 @@ def is_prehypertensive(systolic, diastolic):
 def categorize_blood_pressure(systolic, diastolic):
     reading = BloodPressureReading(systolic, diastolic)
     """分类血压状态"""
-    if is_hypertensive(systolic, diastolic, reading):
+    if is_hypertensive(reading):
         return "高血压"
     elif is_prehypertensive(systolic, diastolic):
         return "高血压前期"
