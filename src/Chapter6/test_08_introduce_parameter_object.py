@@ -1,5 +1,6 @@
 import pytest
-from m08_introduce_parameter_object import categorize_blood_pressure
+
+from Chapter6.m08_introduce_parameter_object import BloodPressure, BloodPressureReading
 
 
 @pytest.mark.parametrize(
@@ -11,4 +12,11 @@ from m08_introduce_parameter_object import categorize_blood_pressure
     ],
 )
 def test_categorize_blood_pressure(systolic, diastolic, expected):
-    assert categorize_blood_pressure(systolic, diastolic) == expected
+    assert BloodPressure(systolic, diastolic).categorize() == expected
+
+
+def test_reading_report():
+    assert (
+        "患者 123 在 11223344 的血压：128/89 mmHg，状态：高血压前期"
+        == BloodPressureReading("123", BloodPressure(128, 89), "11223344").report()
+    )
