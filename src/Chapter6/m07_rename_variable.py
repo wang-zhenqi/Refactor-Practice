@@ -18,4 +18,7 @@ def check_stock(order_qty):
     result = "Low Stock Warning" if flag else "Stock OK"
     print(result)
 
-    return flag
+    return {
+        "result": result,
+        "flag": flag,
+    }
