@@ -1,24 +1,21 @@
-# 全局变量：当前库存（但名字叫 temp_data？）
-temp_data = 150
+from typing import Union
 
-# 常量：库存警戒线（但命名全小写，且名字无意义）
-threshold = 50
+_temp_data: int = 150
+REORDER_THRESHOLD = 50
 
 
-def check_stock(order_qty):
-    # 局部变量：剩余库存（但叫 data？）
-    data = temp_data - order_qty
+def current_stock() -> int:
+    return _temp_data
 
-    # 局部变量：是否需要警告（但叫 flag？）
-    flag = False
-    if data < threshold:
-        flag = True
 
-    # 输出结果（但 result 含义模糊）
-    result = "Low Stock Warning" if flag else "Stock OK"
-    print(result)
+def check_stock(order_quantity: int) -> dict[str, Union[str, bool]]:
+    remaining_stock: int = current_stock() - order_quantity
+    is_low_stock: bool = True if remaining_stock < REORDER_THRESHOLD else False
+
+    stock_status_message: str = "Low Stock Warning" if is_low_stock else "Stock OK"
+    print(stock_status_message)
 
     return {
-        "result": result,
-        "flag": flag,
+        "stock_status_message": stock_status_message,
+        "is_low_stock": is_low_stock,
     }
