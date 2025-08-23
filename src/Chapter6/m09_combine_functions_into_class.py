@@ -63,6 +63,20 @@ class OrderDiscounts:
         self.customer_level = customer_level
         self.is_first_order = is_first_order
 
+    def _calculate_discount(self):
+        """根据客户等级和是否首单计算折扣率"""
+        base_discount = 0.0
+        if self.customer_level == "premium":
+            base_discount = 0.15
+        elif self.customer_level == "gold":
+            base_discount = 0.10
+        elif self.customer_level == "silver":
+            base_discount = 0.05
+
+        first_order_bonus = 0.05 if self.is_first_order else 0.0
+        total_discount = base_discount + first_order_bonus
+        return min(total_discount, 0.20)  # 最高不超过20%
+
     def _apply_discount(self):
         """应用折扣到订单金额"""
         discount_rate = calculate_discount(self.order_amount, self.customer_level, self.is_first_order)
