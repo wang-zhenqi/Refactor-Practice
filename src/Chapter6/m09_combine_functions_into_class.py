@@ -1,5 +1,6 @@
 # order_discounts.py
 
+
 def calculate_discount(order_amount, customer_level, is_first_order):
     """根据客户等级和是否首单计算折扣率"""
     base_discount = 0.0
