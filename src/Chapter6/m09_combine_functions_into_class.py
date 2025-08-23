@@ -55,3 +55,28 @@ def format_order_summary(order_amount, customer_level, is_first_order):
 折后价格: {final_amount} 元
 配送: {shipping_status}
 """
+
+
+class OrderDiscounts:
+    def __init__(self, order_amount: int, customer_level: str, is_first_order: bool):
+        self.order_amount = order_amount
+        self.customer_level = customer_level
+        self.is_first_order = is_first_order
+
+    def _apply_discount(self):
+        """应用折扣到订单金额"""
+        discount_rate = calculate_discount(self.order_amount, self.customer_level, self.is_first_order)
+        discounted_amount = self.order_amount * (1 - discount_rate)
+        return round(discounted_amount, 2)
+
+    def format_order_summary(self) -> str:
+        """格式化订单摘要"""
+        final_amount = self._apply_discount()
+        description = discount_description(self.customer_level, self.is_first_order)
+        shipping_status = "包邮" if is_eligible_for_free_shipping(final_amount) else "需支付运费"
+
+        return f"""订单原价: {self.order_amount} 元
+折扣详情: {description}
+折后价格: {final_amount} 元
+配送: {shipping_status}
+"""
