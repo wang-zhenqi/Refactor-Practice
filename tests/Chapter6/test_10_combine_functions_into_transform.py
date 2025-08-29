@@ -52,3 +52,5 @@ def test_given_employee_record_when_enhance_then_enhanced_data_should_have_deriv
     enhanced_employee = enhance_the_employee_record(employee)
 
     assert enhanced_employee["total_compensation"] == 13000
+    assert enhanced_employee["after_tax_salary"] == 6400.0
+    assert enhanced_employee["seniority_bonus"] == 5000
