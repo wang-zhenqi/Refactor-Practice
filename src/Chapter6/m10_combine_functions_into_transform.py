@@ -15,18 +15,23 @@ def calculate_total_compensation(employee):
 
 
 def enhance_the_employee_record(employee):
-    return deepcopy(employee)
+    enhanced_employee = deepcopy(employee)
+
+    enhanced_employee["total_compensation"] = calculate_total_compensation(employee)
+
+    return enhanced_employee
 
 
 def create_compensation_report(employees):
     result = []
     for emp in employees:
+        emp = enhance_the_employee_record(emp)
         report_item = {
             "name": emp["name"],
             "base_salary": emp["base_salary"],
             "seniority_bonus": calculate_seniority_bonus(emp),
             "after_tax_salary": calculate_after_tax_salary(emp),
-            "total_compensation": calculate_total_compensation(emp),
+            "total_compensation": emp["total_compensation"],
         }
         result.append(report_item)
     return result

@@ -37,7 +37,7 @@ def test_create_compensation_report():
     assert create_compensation_report(employees) == expected
 
 
-def test_enhance_the_employee_record():
+def test_given_employee_record_when_enhance_then_original_data_should_not_change():
     employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
     enhanced_employee = enhance_the_employee_record(employee)
 
@@ -45,3 +45,10 @@ def test_enhance_the_employee_record():
     assert enhanced_employee["base_salary"] == 8000
     assert enhanced_employee["years_of_service"] == 5
     assert employee is not enhanced_employee
+
+
+def test_given_employee_record_when_enhance_then_enhanced_data_should_have_derived_fields():
+    employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
+    enhanced_employee = enhance_the_employee_record(employee)
+
+    assert enhanced_employee["total_compensation"] == 13000
