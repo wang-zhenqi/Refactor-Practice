@@ -1,3 +1,6 @@
+from copy import deepcopy
+
+
 def calculate_seniority_bonus(employee):
     return employee["years_of_service"] * 1000
 
@@ -9,6 +12,10 @@ def calculate_after_tax_salary(employee):
 def calculate_total_compensation(employee):
     bonus = calculate_seniority_bonus(employee)
     return employee["base_salary"] + bonus
+
+
+def enhance_the_employee_record(employee):
+    return deepcopy(employee)
 
 
 def create_compensation_report(employees):

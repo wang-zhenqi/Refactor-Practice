@@ -1,4 +1,7 @@
-from Chapter6.m10_combine_functions_into_transform import create_compensation_report
+from Chapter6.m10_combine_functions_into_transform import (
+    create_compensation_report,
+    enhance_the_employee_record,
+)
 
 
 def test_create_compensation_report():
@@ -32,3 +35,13 @@ def test_create_compensation_report():
         },
     ]
     assert create_compensation_report(employees) == expected
+
+
+def test_enhance_the_employee_record():
+    employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
+    enhanced_employee = enhance_the_employee_record(employee)
+
+    assert enhanced_employee["name"] == "Alice"
+    assert enhanced_employee["base_salary"] == 8000
+    assert enhanced_employee["years_of_service"] == 5
+    assert employee is not enhanced_employee
