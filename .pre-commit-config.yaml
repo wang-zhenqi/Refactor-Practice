@@ -15,8 +15,6 @@ repos:
         args: [ "--assume-in-merge" ]
       - id: check-toml
         additional_dependencies: [ "--index-url", "https://pypi.tuna.tsinghua.edu.cn/simple" ]
-      - id: double-quote-string-fixer
-        additional_dependencies: [ "--index-url", "https://pypi.tuna.tsinghua.edu.cn/simple" ]
   - repo: https://github.com/psf/black
     rev: 25.1.0
     hooks:
