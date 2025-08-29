@@ -6,6 +6,9 @@ readme = "README.md"
 authors = [{name="zhenqi", email="dreamingwzq@gmail.com"}]
 requires-python = "^3.11"
 
+[tool.poetry]
+package-mode = false
+
 [tool.poetry.group.dev.dependencies]
 pydantic = "^2.11.7"
 
