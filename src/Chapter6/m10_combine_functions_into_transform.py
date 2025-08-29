@@ -1,21 +1,21 @@
 from copy import deepcopy
 
 
-def enhance_the_employee_record(employee):
-    enhanced_employee = deepcopy(employee)
+def enrich_the_employee_record(employee):
+    enriched_employee = deepcopy(employee)
 
     _seniority_bonus = employee["years_of_service"] * 1000
-    enhanced_employee["total_compensation"] = employee["base_salary"] + _seniority_bonus
-    enhanced_employee["after_tax_salary"] = employee["base_salary"] * 0.8
-    enhanced_employee["seniority_bonus"] = _seniority_bonus
+    enriched_employee["total_compensation"] = employee["base_salary"] + _seniority_bonus
+    enriched_employee["after_tax_salary"] = employee["base_salary"] * 0.8
+    enriched_employee["seniority_bonus"] = _seniority_bonus
 
-    return enhanced_employee
+    return enriched_employee
 
 
 def create_compensation_report(employees):
     result = []
     for emp in employees:
-        emp = enhance_the_employee_record(emp)
+        emp = enrich_the_employee_record(emp)
         report_item = {
             "name": emp["name"],
             "base_salary": emp["base_salary"],

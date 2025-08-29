@@ -1,6 +1,6 @@
 from Chapter6.m10_combine_functions_into_transform import (
     create_compensation_report,
-    enhance_the_employee_record,
+    enrich_the_employee_record,
 )
 
 
@@ -37,20 +37,20 @@ def test_create_compensation_report():
     assert create_compensation_report(employees) == expected
 
 
-def test_given_employee_record_when_enhance_then_original_data_should_not_change():
+def test_given_employee_record_when_enrich_then_original_data_should_not_change():
     employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
-    enhanced_employee = enhance_the_employee_record(employee)
+    enriched_employee = enrich_the_employee_record(employee)
 
-    assert enhanced_employee["name"] == "Alice"
-    assert enhanced_employee["base_salary"] == 8000
-    assert enhanced_employee["years_of_service"] == 5
-    assert employee is not enhanced_employee
+    assert enriched_employee["name"] == "Alice"
+    assert enriched_employee["base_salary"] == 8000
+    assert enriched_employee["years_of_service"] == 5
+    assert employee is not enriched_employee
 
 
-def test_given_employee_record_when_enhance_then_enhanced_data_should_have_derived_fields():
+def test_given_employee_record_when_enrich_then_enriched_data_should_have_derived_fields():
     employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
-    enhanced_employee = enhance_the_employee_record(employee)
+    enriched_employee = enrich_the_employee_record(employee)
 
-    assert enhanced_employee["total_compensation"] == 13000
-    assert enhanced_employee["after_tax_salary"] == 6400.0
-    assert enhanced_employee["seniority_bonus"] == 5000
+    assert enriched_employee["total_compensation"] == 13000
+    assert enriched_employee["after_tax_salary"] == 6400.0
+    assert enriched_employee["seniority_bonus"] == 5000
