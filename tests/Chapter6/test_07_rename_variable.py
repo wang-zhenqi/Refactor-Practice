@@ -1,4 +1,4 @@
-from m07_rename_variable import check_stock
+from Chapter6.m07_rename_variable import check_stock
 
 
 def test_check_stock_given_order_quantity_should_suggest_low_stock_when_remaining_less_then_50():

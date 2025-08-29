@@ -1,4 +1,4 @@
-from m04_inline_variable import generate_greeting
+from Chapter6.m04_inline_variable import generate_greeting
 
 
 def test_generate_greeting():

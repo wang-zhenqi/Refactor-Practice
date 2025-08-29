@@ -1,4 +1,4 @@
-from m03_extract_variable import calculate_total_cost
+from Chapter6.m03_extract_variable import calculate_total_cost
 
 
 def test_total_cost():

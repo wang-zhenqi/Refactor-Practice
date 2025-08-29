@@ -1,4 +1,4 @@
-from m02_inline_function import print_invoice, print_order_summary
+from Chapter6.m02_inline_function import print_invoice, print_order_summary
 
 
 def test_print_invoice():

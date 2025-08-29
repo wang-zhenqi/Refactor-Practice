@@ -1,4 +1,4 @@
-from m10_combine_functions_into_transform import create_compensation_report
+from Chapter6.m10_combine_functions_into_transform import create_compensation_report
 
 
 def test_create_compensation_report():

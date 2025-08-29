@@ -1,4 +1,4 @@
-from m01_extract_function import process_student_grades
+from Chapter6.m01_extract_function import process_student_grades
 
 
 def test_process_student_grades():

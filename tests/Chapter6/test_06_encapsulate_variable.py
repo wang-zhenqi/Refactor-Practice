@@ -1,5 +1,6 @@
 import pytest
-from m06_encapsulate_variable import (
+
+from Chapter6.m06_encapsulate_variable import (
     create_employee,
     default_company,
     get_company_slogan,
@@ -11,8 +12,6 @@ from m06_encapsulate_variable import (
 @pytest.fixture(autouse=True)
 def reset_default_company():
     """在每个测试函数运行前，重置 _default_company_data 为初始值"""
-    from m06_encapsulate_variable import set_default_company
-
     initial_data = {"name": "TechCorp", "country": "USA", "founded": 1995}
     set_default_company(initial_data)
     # 测试结束后无需清理，autouse=True 会自动为每个测试重置

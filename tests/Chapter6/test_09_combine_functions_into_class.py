@@ -1,4 +1,4 @@
-from m09_combine_functions_into_class import OrderDiscounts
+from Chapter6.m09_combine_functions_into_class import OrderDiscounts
 
 
 def test_format_order_summary_1():

@@ -1,4 +1,4 @@
-from m05_change_function_declaration import (
+from Chapter6.m05_change_function_declaration import (
     User,
     apply_discount_and_tax,
     calculate_lifestyle_score,
