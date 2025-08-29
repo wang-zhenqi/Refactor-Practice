@@ -1,6 +1,6 @@
 from Chapter6.m10_combine_functions_into_transform import (
     create_compensation_report,
-    enrich_the_employee_record,
+    enrich_employee_record,
 )
 
 
@@ -39,7 +39,7 @@ def test_create_compensation_report():
 
 def test_given_employee_record_when_enrich_then_original_data_should_not_change():
     employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
-    enriched_employee = enrich_the_employee_record(employee)
+    enriched_employee = enrich_employee_record(employee)
 
     assert enriched_employee["name"] == "Alice"
     assert enriched_employee["base_salary"] == 8000
@@ -49,7 +49,7 @@ def test_given_employee_record_when_enrich_then_original_data_should_not_change(
 
 def test_given_employee_record_when_enrich_then_enriched_data_should_have_derived_fields():
     employee = {"name": "Alice", "base_salary": 8000, "years_of_service": 5}
-    enriched_employee = enrich_the_employee_record(employee)
+    enriched_employee = enrich_employee_record(employee)
 
     assert enriched_employee["total_compensation"] == 13000
     assert enriched_employee["after_tax_salary"] == 6400.0
