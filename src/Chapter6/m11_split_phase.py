@@ -1,5 +1,17 @@
 from pydantic.dataclasses import dataclass
 
+BASE_DISCOUNTS: dict[str, float] = {
+    "premium": 0.15,
+    "gold": 0.10,
+    "silver": 0.05,
+}
+
+CATEGORY_BONUSES: dict[str, float] = {
+    "electronics": 0.05,
+    "clothing": 0.08,
+    "books": 0.02,
+}
+
 
 @dataclass
 class Order:
@@ -13,17 +25,9 @@ def calculate_discount(raw_order_data: str) -> float:
 
 
 def _discount_amount(order: Order) -> float:
-    base_discount: float = {
-        "premium": 0.15,
-        "gold": 0.10,
-        "silver": 0.05,
-    }.get(order.customer_level, 0.0)
+    base_discount: float = BASE_DISCOUNTS.get(order.customer_level, 0.0)
 
-    category_bonus: float = {
-        "electronics": 0.05,
-        "clothing": 0.08,
-        "books": 0.02,
-    }.get(order.category, 0.0)
+    category_bonus: float = CATEGORY_BONUSES.get(order.category, 0.0)
 
     return order.amount * (base_discount + category_bonus)
 
