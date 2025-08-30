@@ -8,36 +8,30 @@ class Order:
     customer_level: str
 
 
-def calculate_discount(raw_order_data):
-    order: Order = parse_order_data(raw_order_data)
-
-    discount_amount: float = calculate_discount_amount(order)
-
-    return round(discount_amount, 2)
+def calculate_discount(raw_order_data: str) -> float:
+    return round(_discount_amount(_parse_data(raw_order_data)), 2)
 
 
-def calculate_discount_amount(order: Order) -> float:
-    base_discount_of_levels: dict[str, float] = {
+def _discount_amount(order: Order) -> float:
+    base_discount: float = {
         "premium": 0.15,
         "gold": 0.10,
         "silver": 0.05,
-    }
-    base_discount: float = base_discount_of_levels.get(order.customer_level, 0.0)
+    }.get(order.customer_level, 0.0)
 
-    bonus_by_category: dict[str, float] = {
+    category_bonus: float = {
         "electronics": 0.05,
         "clothing": 0.08,
         "books": 0.02,
-    }
-    category_bonus: float = bonus_by_category.get(order.category, 0.0)
+    }.get(order.category, 0.0)
 
     return order.amount * (base_discount + category_bonus)
 
 
-def parse_order_data(raw_order_data: str) -> Order:
-    parts = raw_order_data.split(",")
+def _parse_data(raw: str) -> Order:
+    p: list[str] = raw.split(",")
     return Order(
-        amount=(float(parts[1].strip())),
-        category=(parts[2].strip()),
-        customer_level=(parts[0].strip()),
+        amount=float(p[1].strip()),
+        category=p[2].strip(),
+        customer_level=p[0].strip(),
     )
